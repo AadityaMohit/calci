@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .calculator {
+            background-color: #000001;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 40px; /* Increased padding for larger size */
+            width: 400px; /* Increased width for larger size */
+        }
+
+        .calculator input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 15px; /* Increased padding for larger size */
+            margin-bottom: 20px; /* Increased margin for larger size */
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 20px; /* Increased font size for larger size */
+        }
+
+        .calculator button {
+            width: 23.5%;
+            padding: 15px; /* Increased padding for larger size */
+            border: none;
+            border-radius: 8px; /* Increased border radius for smoother corners */
+            cursor: pointer;
+            background-color: #080808;
+            color: #f35820;
+            font-size: 20px; /* Increased font size for larger size */
+            margin-right: 2%;
+            margin-bottom: 20px; /* Increased margin for larger size */
+        }
+
+        .calculator button:last-child {
+            margin-right: 0;
+        }
+
+        .calculator button:hover {
+            background-color: #fe9123;
+        }
+    </style>
+</head>
+<body>
+    <!-- Author: AAditya Mohit -->
+    <div class="calculator">
+        <input type="text" id="display" name="display" readonly>
+        <div>
+            <button onclick="addToDisplay('1')">1</button>
+            <button onclick="addToDisplay('2')">2</button>
+            <button onclick="addToDisplay('3')">3</button>
+            <button onclick="addToDisplay('+')">+</button>
+        </div>
+        <div>
+            <button onclick="addToDisplay('4')">4</button>
+            <button onclick="addToDisplay('5')">5</button>
+            <button onclick="addToDisplay('6')">6</button>
+            <button onclick="addToDisplay('-')">-</button>
+        </div>
+        <div>
+            <button onclick="addToDisplay('7')">7</button>
+            <button onclick="addToDisplay('8')">8</button>
+            <button onclick="addToDisplay('9')">9</button>
+            <button onclick="addToDisplay('*')">*</button>
+        </div>
+        <div>
+            <button onclick="addToDisplay('0')">0</button>
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="addToDisplay('/')">/</button>
+        </div>
+    </div>
+
+    <script>
+        let inputs = [];
+
+        function addToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            inputs = [];
+            document.getElementById('display').value = '';
+        }
+
+        function calculate() {
+            let expression = document.getElementById('display').value;
+            let result = eval(expression);
+            document.getElementById('display').value = result;
+            inputs = [];
+        }
+    </script>
+</body>
+</html>
